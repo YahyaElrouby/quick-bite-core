@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build output and caches
+dist/
+*.tsbuildinfo
+.cache/
+.eslintcache
+
+# Local environment variables (keep example templates)
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# Logs and test coverage
+*.log
+logs/
+coverage/
+.nyc_output/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
