@@ -16,8 +16,8 @@ const knexConfig: Knex.Config = {
     max: env.db.pool_max,
   },
   migrations: {
-    directory: "./src/migrations",
-    extension: "ts",
+    directory: env.db.migrations.directory,
+    extension: env.db.migrations.extension,
   },
 };
 

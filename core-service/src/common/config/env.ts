@@ -12,6 +12,8 @@ const schema = z.object({
   DB_PASSWORD: z.string(),
   DB_NAME: z.string(),
   DB_pool_max: z.string().default("10"),
+  DB_MIGRATIONS_DIR: z.string().default("./src/migrations"),
+  DB_MIGRATIONS_EXT: z.enum(["ts", "js"]).default("ts"),
 });
 
 export const parsed = schema.parse(process.env);
@@ -25,5 +27,9 @@ export const env = {
     password: parsed.DB_PASSWORD,
     database: parsed.DB_NAME,
     pool_max: Number(parsed.DB_pool_max),
+    migrations: {
+      directory: parsed.DB_MIGRATIONS_DIR,
+      extension: parsed.DB_MIGRATIONS_EXT,
+    },
   },
 };
