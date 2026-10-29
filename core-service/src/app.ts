@@ -1,7 +1,7 @@
 import express from "express";
-import { routes } from "./routes.js";
-import { correlationId } from "./common/correlation/correlationID.js";
-import { errorHandler } from "./common/error/errorHandler.js";
+import { routes } from "./routes.ts";
+import { correlationId } from "./common/correlation/correlationID.ts";
+import { errorHandler } from "./common/error/errorHandler.ts";
 
 export function createApp() {
   const app = express();

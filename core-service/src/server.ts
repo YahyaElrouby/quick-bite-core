@@ -1,7 +1,7 @@
-import { createApp } from "./app.js";
-import { env } from "./common/config/env.js";
+import { createApp } from "./app.ts";
+import { env } from "./common/config/env.ts";
 import http from "http";
-import { db } from "./common/knex/knex.js";
+import { db } from "./common/knex/knex.ts";
 
 const app = createApp();
 const server = http.createServer(app);

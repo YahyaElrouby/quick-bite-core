@@ -9,7 +9,9 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true
+    "noImplicitAny": true,
+    "rewriteRelativeImportExtensions": true,
+   
   },
   "include": ["src"]
 }

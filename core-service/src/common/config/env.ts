@@ -1,7 +1,8 @@
 import { config } from "dotenv";
+import path from "path";
 import { z } from "zod";
 
-config();
+config({ path: path.resolve(__dirname, "../../../.env") });
 
 const schema = z.object({
   PORT: z.string().default("3000"),
@@ -14,6 +15,11 @@ const schema = z.object({
   DB_pool_max: z.string().default("10"),
   DB_MIGRATIONS_DIR: z.string().default("./src/migrations"),
   DB_MIGRATIONS_EXT: z.enum(["ts", "js"]).default("ts"),
+  ACCESS_TOKEN_SECRET: z.string().min(1),
+  REFRESH_TOKEN_SECRET: z.string().min(1),
+  ACCESS_TOKEN_EXPIRES_IN: z.string().default("1h"),
+  REFRESH_TOKEN_EXPIRES_IN: z.string().default("7d"),
+  
 });
 
 export const parsed = schema.parse(process.env);
@@ -28,8 +34,8 @@ export const env = {
     database: parsed.DB_NAME,
     pool_max: Number(parsed.DB_pool_max),
     migrations: {
-      directory: parsed.DB_MIGRATIONS_DIR,
-      extension: parsed.DB_MIGRATIONS_EXT,
+      directory: path.resolve(__dirname, "../../../", parsed.DB_MIGRATIONS_DIR),
+      extension: parsed.DB_MIGRATIONS_EXT
     },
   },
 };
